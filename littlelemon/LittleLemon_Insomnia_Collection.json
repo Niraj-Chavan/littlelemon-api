@@ -1,0 +1,128 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2026-11-16T00:00:00.000Z",
+  "__export_source": "littlelemon.capstone.v1",
+  "resources": [
+    {
+      "_id": "wrk_littlelemon",
+      "_type": "workspace",
+      "name": "Little Lemon",
+      "description": "Django back-end capstone: menu, bookings, Djoser auth"
+    },
+    {
+      "_id": "req_register",
+      "_type": "request",
+      "workspaceId": "wrk_littlelemon",
+      "name": "1. Register user",
+      "method": "POST",
+      "url": "{{ base_url }}/auth/users/",
+      "headers": [{"name": "Content-Type", "value": "application/json"}],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"username\": \"student1\", \"password\": \"Str0ngPass!2026\"}"
+      }
+    },
+    {
+      "_id": "req_login",
+      "_type": "request",
+      "workspaceId": "wrk_littlelemon",
+      "name": "2. Login (get token)",
+      "method": "POST",
+      "url": "{{ base_url }}/auth/token/login/",
+      "headers": [{"name": "Content-Type", "value": "application/json"}],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"username\": \"student1\", \"password\": \"Str0ngPass!2026\"}"
+      }
+    },
+    {
+      "_id": "req_menu_get",
+      "_type": "request",
+      "workspaceId": "wrk_littlelemon",
+      "name": "3. GET menu",
+      "method": "GET",
+      "url": "{{ base_url }}/restaurant/menu/"
+    },
+    {
+      "_id": "req_menu_post",
+      "_type": "request",
+      "workspaceId": "wrk_littlelemon",
+      "name": "4. POST menu item",
+      "method": "POST",
+      "url": "{{ base_url }}/restaurant/menu/",
+      "headers": [{"name": "Content-Type", "value": "application/json"}],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"title\": \"Tiramisu\", \"price\": \"9.00\", \"inventory\": 5}"
+      }
+    },
+    {
+      "_id": "req_booking_no_token",
+      "_type": "request",
+      "workspaceId": "wrk_littlelemon",
+      "name": "5. POST booking WITHOUT token (expect 401)",
+      "method": "POST",
+      "url": "{{ base_url }}/restaurant/booking/tables/",
+      "headers": [{"name": "Content-Type", "value": "application/json"}],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"name\": \"Niraj\", \"no_of_guests\": 4, \"table_number\": 7, \"booking_date\": \"2026-12-01T19:00:00\"}"
+      }
+    },
+    {
+      "_id": "req_booking_with_token",
+      "_type": "request",
+      "workspaceId": "wrk_littlelemon",
+      "name": "6. POST booking WITH token (expect 201)",
+      "method": "POST",
+      "url": "{{ base_url }}/restaurant/booking/tables/",
+      "headers": [
+        {"name": "Content-Type", "value": "application/json"},
+        {"name": "Authorization", "value": "Token {{ token }}"}
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"name\": \"Niraj\", \"no_of_guests\": 4, \"table_number\": 7, \"booking_date\": \"2026-12-01T19:00:00\"}"
+      }
+    },
+    {
+      "_id": "req_booking_duplicate",
+      "_type": "request",
+      "workspaceId": "wrk_littlelemon",
+      "name": "7. POST same booking again (expect 400)",
+      "method": "POST",
+      "url": "{{ base_url }}/restaurant/booking/tables/",
+      "headers": [
+        {"name": "Content-Type", "value": "application/json"},
+        {"name": "Authorization", "value": "Token {{ token }}"}
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"name\": \"Niraj\", \"no_of_guests\": 4, \"table_number\": 7, \"booking_date\": \"2026-12-01T19:00:00\"}"
+      }
+    },
+    {
+      "_id": "req_api_token_auth",
+      "_type": "request",
+      "workspaceId": "wrk_littlelemon",
+      "name": "8. api-token-auth (peer-review endpoint)",
+      "method": "POST",
+      "url": "{{ base_url }}/api-token-auth/",
+      "headers": [{"name": "Content-Type", "value": "application/json"}],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"username\": \"student1\", \"password\": \"Str0ngPass!2026\"}"
+      }
+    },
+    {
+      "_id": "env_littlelemon",
+      "_type": "environment",
+      "name": "Little Lemon local",
+      "data": {
+        "base_url": "http://127.0.0.1:8000",
+        "token": "paste-token-from-login-response"
+      }
+    }
+  ]
+}
