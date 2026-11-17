@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.permissions import IsAuthenticated
@@ -8,8 +8,8 @@ from .serializers import BookingSerializer, MenuSerializer
 
 
 def index(request):
-    """Static welcome page served at /restaurant/."""
-    return HttpResponse("<h1>Welcome to Little Lemon</h1>")
+    """Little Lemon frontend: live menu, auth and booking demo."""
+    return render(request, "restaurant/index.html")
 
 
 class MenuItemsView(ListCreateAPIView):

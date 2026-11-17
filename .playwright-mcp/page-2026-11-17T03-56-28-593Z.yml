@@ -1,0 +1,142 @@
+- generic [active] [ref=f2e1]:
+  - banner [ref=f2e2]:
+    - generic [ref=f2e3]:
+      - generic [ref=f2e4]: 🍋
+      - paragraph [ref=f2e5]: Django REST Framework Capstone
+      - heading "Little Lemon" [level=1] [ref=f2e6]
+      - paragraph [ref=f2e7]: Mediterranean kitchen · Chicago
+      - generic [ref=f2e8]:
+        - generic [ref=f2e9]: Django
+        - generic [ref=f2e10]: MySQL
+        - generic [ref=f2e11]: DRF + Djoser
+        - generic [ref=f2e12]: Token Auth
+      - link "Book a table ↓" [ref=f2e13] [cursor=pointer]:
+        - /url: "#booking"
+  - main [ref=f2e14]:
+    - generic [ref=f2e15]:
+      - heading "Today's Menu Loaded live from GET /restaurant/menu/" [level=2] [ref=f2e16]:
+        - text: Today's Menu
+        - generic "Loaded live from GET /restaurant/menu/" [ref=f2e17]
+      - paragraph [ref=f2e18]:
+        - text: Served straight from the
+        - code [ref=f2e19]: Menu
+        - text: table in MySQL via
+        - code [ref=f2e20]: GET /restaurant/menu/
+      - generic [ref=f2e21]: Loading menu…
+    - generic [ref=f2e23]:
+      - heading "Reserve a Table" [level=2] [ref=f2e24]
+      - paragraph [ref=f2e25]: This form drives the real API — watch it return 401 → 201 → 400 exactly like the Insomnia collection.
+      - generic [ref=f2e26]:
+        - generic [ref=f2e27]:
+          - heading "1 · Account" [level=3] [ref=f2e28]
+          - generic [ref=f2e29]: ✓ Signed in — token restored from this browser
+          - generic [ref=f2e30]:
+            - button "Log in" [ref=f2e31] [cursor=pointer]
+            - button "Register" [ref=f2e32] [cursor=pointer]
+          - generic [ref=f2e33]:
+            - generic [ref=f2e34]:
+              - text: Username
+              - textbox "Username" [ref=f2e35]: niru
+            - generic [ref=f2e36]:
+              - text: Password
+              - textbox "Password" [ref=f2e37]: nirajchavan
+            - button "Get my token" [ref=f2e38] [cursor=pointer]
+        - generic [ref=f2e39]:
+          - heading "2 · Booking" [level=3] [ref=f2e40]
+          - generic [ref=f2e41]:
+            - generic [ref=f2e42]:
+              - text: Name
+              - textbox "Name" [ref=f2e43]: Niraj
+            - generic [ref=f2e44]:
+              - generic [ref=f2e45]:
+                - text: Guests
+                - spinbutton "Guests" [ref=f2e46]: "4"
+              - generic [ref=f2e47]:
+                - text: Table
+                - spinbutton "Table" [ref=f2e48]: "7"
+            - generic [ref=f2e49]:
+              - text: Date & time
+              - textbox "Date & time" [ref=f2e50]: 2026-11-18T13:30
+            - generic [ref=f2e51]:
+              - button "Reserve (POST)" [ref=f2e52] [cursor=pointer]
+              - button "Try same slot again" [ref=f2e53] [cursor=pointer]
+            - paragraph [ref=f2e55]: “Try same slot again” resubmits the identical booking — the API answers 400 because MySQL's unique constraint blocks it.
+      - generic [ref=f2e56]:
+        - heading [level=3] [ref=f2e57]:
+          - text: My bookings
+          - button "refresh" [ref=f2e58] [cursor=pointer]
+        - generic [ref=f2e59]: No bookings yet — reserve a table above and it will appear here.
+      - generic [ref=f2e61]:
+        - heading [level=3] [ref=f2e62]:
+          - text: API response log
+          - button "clear" [ref=f2e63] [cursor=pointer]
+        - generic [ref=f2e64]: Waiting for requests…
+    - generic [ref=f2e66]:
+      - heading "API Endpoints" [level=2] [ref=f2e67]
+      - table [ref=f2e69]:
+        - rowgroup [ref=f2e70]:
+          - row [ref=f2e71]:
+            - columnheader "Method" [ref=f2e72]
+            - columnheader "Endpoint" [ref=f2e73]
+            - columnheader "Auth" [ref=f2e74]
+            - columnheader "Purpose" [ref=f2e75]
+        - rowgroup [ref=f2e76]:
+          - row [ref=f2e77]:
+            - cell "GET" [ref=f2e78]
+            - cell [ref=f2e79]:
+              - code [ref=f2e80]: /restaurant/menu/
+            - cell "—" [ref=f2e81]
+            - cell "List menu items" [ref=f2e82]
+          - row [ref=f2e83]:
+            - cell "POST" [ref=f2e84]
+            - cell [ref=f2e85]:
+              - code [ref=f2e86]: /restaurant/menu/
+            - cell "—" [ref=f2e87]
+            - cell "Add a menu item" [ref=f2e88]
+          - row [ref=f2e89]:
+            - cell "PUT" [ref=f2e90]
+            - cell [ref=f2e91]:
+              - code [ref=f2e92]: /restaurant/menu/<id>/
+            - cell "—" [ref=f2e93]
+            - cell "Update item" [ref=f2e94]
+          - row [ref=f2e95]:
+            - cell "GET" [ref=f2e96]
+            - cell [ref=f2e97]:
+              - code [ref=f2e98]: /restaurant/booking/tables/
+            - cell "🔒 token" [ref=f2e99]
+            - cell "List bookings" [ref=f2e100]
+          - row [ref=f2e101]:
+            - cell "POST" [ref=f2e102]
+            - cell [ref=f2e103]:
+              - code [ref=f2e104]: /restaurant/booking/tables/
+            - cell "🔒 token" [ref=f2e105]
+            - cell "Create booking" [ref=f2e106]
+          - row [ref=f2e107]:
+            - cell "POST" [ref=f2e108]
+            - cell [ref=f2e109]:
+              - code [ref=f2e110]: /auth/users/
+            - cell "—" [ref=f2e111]
+            - cell "Register (Djoser)" [ref=f2e112]
+          - row [ref=f2e113]:
+            - cell "POST" [ref=f2e114]
+            - cell [ref=f2e115]:
+              - code [ref=f2e116]: /auth/token/login/
+            - cell "—" [ref=f2e117]
+            - cell "Get auth token" [ref=f2e118]
+          - row [ref=f2e119]:
+            - cell "POST" [ref=f2e120]
+            - cell [ref=f2e121]:
+              - code [ref=f2e122]: /api-token-auth/
+            - cell "—" [ref=f2e123]
+            - cell "Peer-review token endpoint" [ref=f2e124]
+  - contentinfo [ref=f2e125]:
+    - paragraph [ref=f2e126]:
+      - text: Little Lemon · Django + MySQL + DRF + Djoser ·
+      - link "Admin" [ref=f2e127] [cursor=pointer]:
+        - /url: /admin/
+      - text: ·
+      - link "JSON API" [ref=f2e128] [cursor=pointer]:
+        - /url: /restaurant/menu/
+      - text: ·
+      - link "GitHub" [ref=f2e129] [cursor=pointer]:
+        - /url: https://github.com/Niraj-Chavan/littlelemon-api

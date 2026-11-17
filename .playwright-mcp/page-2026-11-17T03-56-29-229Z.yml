@@ -1,0 +1,172 @@
+- generic [active] [ref=f3e1]:
+  - banner [ref=f3e2]:
+    - generic [ref=f3e3]:
+      - generic [ref=f3e4]: 🍋
+      - paragraph [ref=f3e5]: Django REST Framework Capstone
+      - heading "Little Lemon" [level=1] [ref=f3e6]
+      - paragraph [ref=f3e7]: Mediterranean kitchen · Chicago
+      - generic [ref=f3e8]:
+        - generic [ref=f3e9]: Django
+        - generic [ref=f3e10]: MySQL
+        - generic [ref=f3e11]: DRF + Djoser
+        - generic [ref=f3e12]: Token Auth
+      - link "Book a table ↓" [ref=f3e13] [cursor=pointer]:
+        - /url: "#booking"
+  - main [ref=f3e14]:
+    - generic [ref=f3e15]:
+      - heading "Today's Menu Loaded live from GET /restaurant/menu/" [level=2] [ref=f3e16]:
+        - text: Today's Menu
+        - generic "Loaded live from GET /restaurant/menu/" [ref=f3e17]
+      - paragraph [ref=f3e18]:
+        - text: Served straight from the
+        - code [ref=f3e19]: Menu
+        - text: table in MySQL via
+        - code [ref=f3e20]: GET /restaurant/menu/
+      - generic [ref=f3e21]:
+        - generic [ref=f3e130]:
+          - generic [ref=f3e131]: 🥗
+          - generic [ref=f3e132]:
+            - heading "Bruschetta" [level=3] [ref=f3e133]
+            - generic [ref=f3e134]:
+              - generic [ref=f3e135]: $7.50
+              - generic [ref=f3e136]: 15 in stock
+        - generic [ref=f3e137]:
+          - generic [ref=f3e138]: 🥗
+          - generic [ref=f3e139]:
+            - heading "Greek Salad" [level=3] [ref=f3e140]
+            - generic [ref=f3e141]:
+              - generic [ref=f3e142]: $11.99
+              - generic [ref=f3e143]: 20 in stock
+        - generic [ref=f3e144]:
+          - generic [ref=f3e145]: 🥗
+          - generic [ref=f3e146]:
+            - heading "Lemon Cake" [level=3] [ref=f3e147]
+            - generic [ref=f3e148]:
+              - generic [ref=f3e149]: $6.25
+              - generic [ref=f3e150]: 8 in stock
+        - generic [ref=f3e151]:
+          - generic [ref=f3e152]: 🥗
+          - generic [ref=f3e153]:
+            - heading "Pasta Carbonara" [level=3] [ref=f3e154]
+            - generic [ref=f3e155]:
+              - generic [ref=f3e156]: $13.50
+              - generic [ref=f3e157]: 10 in stock
+    - generic [ref=f3e23]:
+      - heading "Reserve a Table" [level=2] [ref=f3e24]
+      - paragraph [ref=f3e25]: This form drives the real API — watch it return 401 → 201 → 400 exactly like the Insomnia collection.
+      - generic [ref=f3e26]:
+        - generic [ref=f3e27]:
+          - heading "1 · Account" [level=3] [ref=f3e28]
+          - generic [ref=f3e29]: Not signed in — bookings will be rejected (401)
+          - generic [ref=f3e30]:
+            - button "Log in" [ref=f3e31] [cursor=pointer]
+            - button "Register" [ref=f3e32] [cursor=pointer]
+          - generic [ref=f3e33]:
+            - generic [ref=f3e34]:
+              - text: Username
+              - textbox "Username" [ref=f3e35]: niru
+            - generic [ref=f3e36]:
+              - text: Password
+              - textbox "Password" [ref=f3e37]: nirajchavan
+            - button "Get my token" [ref=f3e38] [cursor=pointer]
+        - generic [ref=f3e39]:
+          - heading "2 · Booking" [level=3] [ref=f3e40]
+          - generic [ref=f3e41]:
+            - generic [ref=f3e42]:
+              - text: Name
+              - textbox "Name" [ref=f3e43]: Niraj
+            - generic [ref=f3e44]:
+              - generic [ref=f3e45]:
+                - text: Guests
+                - spinbutton "Guests" [ref=f3e46]: "4"
+              - generic [ref=f3e47]:
+                - text: Table
+                - spinbutton "Table" [ref=f3e48]: "7"
+            - generic [ref=f3e49]:
+              - text: Date & time
+              - textbox "Date & time" [ref=f3e50]: 2026-11-18T13:30
+            - generic [ref=f3e51]:
+              - button "Reserve (POST)" [ref=f3e52] [cursor=pointer]
+              - button "Try same slot again" [ref=f3e53] [cursor=pointer]
+            - paragraph [ref=f3e55]: “Try same slot again” resubmits the identical booking — the API answers 400 because MySQL's unique constraint blocks it.
+      - generic [ref=f3e56]:
+        - heading [level=3] [ref=f3e57]:
+          - text: My bookings
+          - button "refresh" [ref=f3e58] [cursor=pointer]
+        - generic [ref=f3e59]: Sign in to see your saved bookings.
+      - generic [ref=f3e61]:
+        - heading [level=3] [ref=f3e62]:
+          - text: API response log
+          - button "clear" [ref=f3e63] [cursor=pointer]
+        - generic [ref=f3e64]:
+          - generic [ref=f3e158]: 200 GET /restaurant/menu/
+          - generic [ref=f3e65]: Waiting for requests…
+    - generic [ref=f3e66]:
+      - heading "API Endpoints" [level=2] [ref=f3e67]
+      - table [ref=f3e69]:
+        - rowgroup [ref=f3e70]:
+          - row [ref=f3e71]:
+            - columnheader "Method" [ref=f3e72]
+            - columnheader "Endpoint" [ref=f3e73]
+            - columnheader "Auth" [ref=f3e74]
+            - columnheader "Purpose" [ref=f3e75]
+        - rowgroup [ref=f3e76]:
+          - row [ref=f3e77]:
+            - cell "GET" [ref=f3e78]
+            - cell [ref=f3e79]:
+              - code [ref=f3e80]: /restaurant/menu/
+            - cell "—" [ref=f3e81]
+            - cell "List menu items" [ref=f3e82]
+          - row [ref=f3e83]:
+            - cell "POST" [ref=f3e84]
+            - cell [ref=f3e85]:
+              - code [ref=f3e86]: /restaurant/menu/
+            - cell "—" [ref=f3e87]
+            - cell "Add a menu item" [ref=f3e88]
+          - row [ref=f3e89]:
+            - cell "PUT" [ref=f3e90]
+            - cell [ref=f3e91]:
+              - code [ref=f3e92]: /restaurant/menu/<id>/
+            - cell "—" [ref=f3e93]
+            - cell "Update item" [ref=f3e94]
+          - row [ref=f3e95]:
+            - cell "GET" [ref=f3e96]
+            - cell [ref=f3e97]:
+              - code [ref=f3e98]: /restaurant/booking/tables/
+            - cell "🔒 token" [ref=f3e99]
+            - cell "List bookings" [ref=f3e100]
+          - row [ref=f3e101]:
+            - cell "POST" [ref=f3e102]
+            - cell [ref=f3e103]:
+              - code [ref=f3e104]: /restaurant/booking/tables/
+            - cell "🔒 token" [ref=f3e105]
+            - cell "Create booking" [ref=f3e106]
+          - row [ref=f3e107]:
+            - cell "POST" [ref=f3e108]
+            - cell [ref=f3e109]:
+              - code [ref=f3e110]: /auth/users/
+            - cell "—" [ref=f3e111]
+            - cell "Register (Djoser)" [ref=f3e112]
+          - row [ref=f3e113]:
+            - cell "POST" [ref=f3e114]
+            - cell [ref=f3e115]:
+              - code [ref=f3e116]: /auth/token/login/
+            - cell "—" [ref=f3e117]
+            - cell "Get auth token" [ref=f3e118]
+          - row [ref=f3e119]:
+            - cell "POST" [ref=f3e120]
+            - cell [ref=f3e121]:
+              - code [ref=f3e122]: /api-token-auth/
+            - cell "—" [ref=f3e123]
+            - cell "Peer-review token endpoint" [ref=f3e124]
+  - contentinfo [ref=f3e125]:
+    - paragraph [ref=f3e126]:
+      - text: Little Lemon · Django + MySQL + DRF + Djoser ·
+      - link "Admin" [ref=f3e127] [cursor=pointer]:
+        - /url: /admin/
+      - text: ·
+      - link "JSON API" [ref=f3e128] [cursor=pointer]:
+        - /url: /restaurant/menu/
+      - text: ·
+      - link "GitHub" [ref=f3e129] [cursor=pointer]:
+        - /url: https://github.com/Niraj-Chavan/littlelemon-api

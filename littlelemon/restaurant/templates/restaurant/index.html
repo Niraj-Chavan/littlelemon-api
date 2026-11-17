@@ -1,0 +1,135 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Little Lemon · Book a Table</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'restaurant/style.css' %}" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍋</text></svg>" />
+</head>
+<body>
+  <!-- ================= HEADER ================= -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="logo-mark">🍋</div>
+      <p class="eyebrow">Django REST Framework Capstone</p>
+      <h1>Little Lemon</h1>
+      <p class="tagline">Mediterranean kitchen · Chicago</p>
+      <div class="hero-badges">
+        <span class="badge">Django</span>
+        <span class="badge">MySQL</span>
+        <span class="badge">DRF + Djoser</span>
+        <span class="badge">Token Auth</span>
+      </div>
+      <a class="cta" href="#booking">Book a table ↓</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ================= MENU ================= -->
+    <section id="menu" class="section">
+      <h2>Today's Menu <span class="live-dot" title="Loaded live from GET /restaurant/menu/"></span></h2>
+      <p class="section-sub">Served straight from the <code>Menu</code> table in MySQL via <code>GET /restaurant/menu/</code></p>
+      <div id="menu-grid" class="menu-grid">
+        <div class="skeleton">Loading menu…</div>
+      </div>
+    </section>
+
+    <!-- ================= BOOKING DEMO ================= -->
+    <section id="booking" class="section alt">
+      <h2>Reserve a Table</h2>
+      <p class="section-sub">This form drives the real API — watch it return <b>401 → 201 → 400</b> exactly like the Insomnia collection.</p>
+
+      <div class="booking-layout">
+        <!-- Auth card -->
+        <div class="card">
+          <h3>1 · Account</h3>
+          <div id="auth-state" class="auth-state signed-out">Not signed in — bookings will be rejected (401)</div>
+
+          <div class="tabs">
+            <button class="tab active" data-tab="login">Log in</button>
+            <button class="tab" data-tab="register">Register</button>
+          </div>
+
+          <form id="login-form" class="auth-form">
+            <label>Username <input id="login-username" autocomplete="username" required /></label>
+            <label>Password <input id="login-password" type="password" autocomplete="current-password" required /></label>
+            <button type="submit" class="btn">Get my token</button>
+          </form>
+
+          <form id="register-form" class="auth-form hidden">
+            <label>Username <input id="register-username" autocomplete="username" required /></label>
+            <label>Password <input id="register-password" type="password" autocomplete="new-password"
+                   placeholder="Min. 8 chars, not all numbers" required /></label>
+            <button type="submit" class="btn ghost">Create account</button>
+          </form>
+        </div>
+
+        <!-- Booking card -->
+        <div class="card">
+          <h3>2 · Booking</h3>
+          <form id="booking-form">
+            <label>Name <input id="bk-name" required /></label>
+            <div class="row">
+              <label>Guests <input id="bk-guests" type="number" min="1" value="4" required /></label>
+              <label>Table <input id="bk-table" type="number" min="1" value="7" required /></label>
+            </div>
+            <label>Date &amp; time <input id="bk-date" type="datetime-local" required /></label>
+            <div class="row">
+              <button type="submit" class="btn">Reserve (POST)</button>
+              <button type="button" id="btn-rebook" class="btn ghost">Try same slot again</button>
+            </div>
+            <div id="booking-result" class="result hidden"></div>
+            <p class="hint">“Try same slot again” resubmits the identical booking — the API answers <b>400</b> because MySQL's unique constraint blocks it.</p>
+          </form>
+        </div>
+      </div>
+
+      <!-- My bookings -->
+      <div class="log-card" id="my-bookings">
+        <h3>My bookings <button id="refresh-bookings" class="mini">refresh</button></h3>
+        <div id="bookings-table-wrap">
+          <div class="log-line muted">Sign in to see your saved bookings.</div>
+        </div>
+      </div>
+
+      <!-- Response log -->
+      <div class="log-card">
+        <h3>API response log <button id="clear-log" class="mini">clear</button></h3>
+        <div id="log" class="log"><div class="log-line muted">Waiting for requests…</div></div>
+      </div>
+    </section>
+
+    <!-- ================= API DOCS ================= -->
+    <section id="api" class="section">
+      <h2>API Endpoints</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Method</th><th>Endpoint</th><th>Auth</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td><span class="m get">GET</span></td><td><code>/restaurant/menu/</code></td><td>—</td><td>List menu items</td></tr>
+            <tr><td><span class="m post">POST</span></td><td><code>/restaurant/menu/</code></td><td>—</td><td>Add a menu item</td></tr>
+            <tr><td><span class="m put">PUT</span></td><td><code>/restaurant/menu/&lt;id&gt;/</code></td><td>—</td><td>Update item</td></tr>
+            <tr><td><span class="m get">GET</span></td><td><code>/restaurant/booking/tables/</code></td><td>🔒 token</td><td>List bookings</td></tr>
+            <tr><td><span class="m post">POST</span></td><td><code>/restaurant/booking/tables/</code></td><td>🔒 token</td><td>Create booking</td></tr>
+            <tr><td><span class="m post">POST</span></td><td><code>/auth/users/</code></td><td>—</td><td>Register (Djoser)</td></tr>
+            <tr><td><span class="m post">POST</span></td><td><code>/auth/token/login/</code></td><td>—</td><td>Get auth token</td></tr>
+            <tr><td><span class="m post">POST</span></td><td><code>/api-token-auth/</code></td><td>—</td><td>Peer-review token endpoint</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p><b>Little Lemon</b> · Django + MySQL + DRF + Djoser ·
+      <a href="/admin/">Admin</a> · <a href="/restaurant/menu/">JSON API</a> ·
+      <a href="https://github.com/Niraj-Chavan/littlelemon-api">GitHub</a></p>
+  </footer>
+
+  <script src="{% static 'restaurant/app.js' %}"></script>
+</body>
+</html>

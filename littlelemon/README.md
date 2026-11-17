@@ -1,8 +1,17 @@
 # Little Lemon API — Django Back-End Capstone
 
-REST back-end for the Little Lemon restaurant: menu management and table
-booking with authentication, throttling, and a database rule that blocks
-double bookings.
+REST back-end **with a live frontend** for the Little Lemon restaurant: menu
+management and table booking with authentication, throttling, and a database
+rule that blocks double bookings.
+
+> **See it in one page:** open `/restaurant/` in a browser. The page loads the
+> real menu from MySQL, signs users in with real tokens, and its booking form
+> shows the **401 → 201 → 400** double-booking story live in an on-screen API
+> log. Screenshots in [`screenshots/`](screenshots/).
+
+| Demo (screenshots/booking-demo.png) |
+|---|
+| Book without a token → **401** · with a token → **201** · same slot again → **400** — all shown live in the page's API response log. |
 
 ## Tech stack
 
